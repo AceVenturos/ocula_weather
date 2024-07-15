@@ -27,6 +27,7 @@ def get_geolocation(city: str):
 
 class WeatherResponse(BaseModel):
     city: str
+    date: str
     min_temp: float
     max_temp: float
     avg_temp: float
@@ -50,4 +51,5 @@ def get_weather(city: str, date: str):
                 data['temperature']['night']) / 4
     # Only humidity reading is afternoon
     humidity = data['humidity']['afternoon']
-    return WeatherResponse(city=city, min_temp=min_temp, max_temp=max_temp, avg_temp=avg_temp, humidity=humidity)
+    return WeatherResponse(city=city, date=date, min_temp=min_temp, max_temp=max_temp, avg_temp=avg_temp,
+                           humidity=humidity)

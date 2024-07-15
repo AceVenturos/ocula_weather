@@ -13,10 +13,10 @@ def test_get_weather():
     assert "date" in data
     assert data["date"] == "1990-07-15"
     assert "min_temp" in data
-    assert data["min_temp"] == "286.73"
+    assert data["min_temp"] == 286.73
     assert "max_temp" in data
-    assert data["max_temp"] == "290.24"
+    assert data["max_temp"] == 290.24
     assert "avg_temp" in data
-    assert data["avg_temp"] == "289.40500000000003"
+    assert data["avg_temp"] == 289.40500000000003
     assert "humidity" in data
-    assert data["humidity"] == "94.01"
+    assert data["humidity"] == 94.01
