@@ -5,8 +5,6 @@ import requests
 from weather_api.main import get_geolocation
 
 
-# Using mock tests to both test scenarios where API Fails and to highlight what I would do where API calls incur costs
-# in real world development
 def mock_get(*args, **kwargs):
     if args[0].startswith("http://api.openweathermap.org/geo/1.0/direct?q=Belfast"):
         return MockResponse([{"lat": 54.596391, "lon": -5.9301829}], 200)
