@@ -1,0 +1,16 @@
+Tried utilising both repos linked in the requirements document - I ended up spending an afternoon trying to solve an
+issue with one installing the Poetry dependency which occurred during the docker compose step. I decided to build from
+scratch utilising small parts of the repos as a guide.
+
+Reviewing the requirements, the One Call API's Daily Aggregation made the most sense as it returned the daily min, max,
+humidity and enough datapoints to derive an average temperature per day.
+
+Moving Forward:
+- I would like to finish and deploy the weather_api via GitHub actions
+- Add more unit/api tests and/or validation i.e. invalid data format being passed
+- Utilise an SQL database to cache calls to minimise repeated API calls
+- General refactoring/code clean-up
+- Would look into what the best practice or solutions requires when calculating the average temperature
+
+Questions (More for my own learning):
+- What are best practices in handling/storing API keys?
