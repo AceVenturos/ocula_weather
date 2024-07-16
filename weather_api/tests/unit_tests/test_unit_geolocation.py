@@ -2,7 +2,7 @@ from unittest.mock import patch
 from fastapi import HTTPException
 import requests
 
-from weather_api.main import get_geolocation
+from main import get_geolocation
 
 
 def mock_get(*args, **kwargs):

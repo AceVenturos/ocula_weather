@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 
-from weather_api.main import get_geolocation
+from main import get_geolocation
 
 
 def test_get_geolocation_valid_city():

@@ -2,7 +2,7 @@ from pprint import pprint
 
 from fastapi import HTTPException
 from fastapi.testclient import TestClient
-from weather_api.main import app
+from main import app
 
 client = TestClient(app)
 

@@ -2,7 +2,7 @@ from unittest.mock import patch
 from fastapi.testclient import TestClient
 import pytest
 
-from weather_api.main import app
+from main import app
 
 client = TestClient(app)
 
