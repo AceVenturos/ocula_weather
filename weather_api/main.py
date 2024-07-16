@@ -13,9 +13,11 @@ def get_geolocation(city: str):
     geo_url = f"http://api.openweathermap.org/geo/1.0/direct?q={city}&appid={appid}"
     response = requests.get(geo_url)
 
+    print("here")
     if response.status_code != 200:
         raise HTTPException(status_code=response.status_code, detail="Error fetching geolocation data")
 
+    # Response empty when invalid City name passed
     data = response.json()
     if not data:
         raise HTTPException(status_code=404, detail="City not found")
@@ -37,13 +39,14 @@ class WeatherResponse(BaseModel):
 @app.get("/weather", response_model=WeatherResponse)
 def get_weather(city: str, date: str):
     geolocation = get_geolocation(city)
-
+    pprint(geolocation)
     url = (f"https://api.openweathermap.org/data/3.0/onecall/day_summary?"
            f"lat={geolocation['lat']}&lon={geolocation['lon']}&date={date}&appid={appid}")
     response = requests.get(url)
     data = response.json()
 
-    pprint(data)
+    if response.status_code != 200:
+        raise HTTPException(status_code=response.status_code, detail=data['message'])
 
     min_temp = data['temperature']['min']
     max_temp = data['temperature']['max']
@@ -51,5 +54,6 @@ def get_weather(city: str, date: str):
                 data['temperature']['night']) / 4
     # Only humidity reading is afternoon
     humidity = data['humidity']['afternoon']
+
     return WeatherResponse(city=city, date=date, min_temp=min_temp, max_temp=max_temp, avg_temp=avg_temp,
                            humidity=humidity)
